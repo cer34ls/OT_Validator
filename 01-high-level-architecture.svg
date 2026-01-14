@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1F4E79"/>
+      <stop offset="100%" style="stop-color:#2E75B6"/>
+    </linearGradient>
+    <linearGradient id="sourceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E3F2FD"/>
+      <stop offset="100%" style="stop-color:#BBDEFB"/>
+    </linearGradient>
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F5E9"/>
+      <stop offset="100%" style="stop-color:#C8E6C9"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF3E0"/>
+      <stop offset="100%" style="stop-color:#FFE0B2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Title -->
+  <rect x="0" y="0" width="1200" height="50" fill="url(#headerGrad)"/>
+  <text x="600" y="32" text-anchor="middle" fill="white" font-family="Arial" font-size="20" font-weight="bold">OT Change Validation Tool - High-Level Architecture</text>
+  
+  <!-- Data Sources Section -->
+  <rect x="20" y="70" width="280" height="700" rx="10" fill="#F5F5F5" stroke="#1565C0" stroke-width="2"/>
+  <rect x="20" y="70" width="280" height="35" rx="10" fill="#1565C0"/>
+  <text x="160" y="94" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">DATA SOURCES</text>
+  
+  <!-- ServiceNow -->
+  <rect x="40" y="120" width="240" height="80" rx="8" fill="url(#sourceGrad)" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="160" y="150" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#1565C0">ServiceNow</text>
+  <text x="160" y="170" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Change Requests (CHG)</text>
+  <text x="160" y="185" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">REST API • JSON</text>
+  
+  <!-- Mantis -->
+  <rect x="40" y="215" width="240" height="80" rx="8" fill="url(#sourceGrad)" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="160" y="245" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#1565C0">Mantis Bug Tracker</text>
+  <text x="160" y="265" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Bug/Issue Tickets</text>
+  <text x="160" y="280" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">REST API or DB Query</text>
+  
+  <!-- WSUS -->
+  <rect x="40" y="310" width="240" height="80" rx="8" fill="url(#sourceGrad)" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="160" y="340" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#1565C0">WSUS Server</text>
+  <text x="160" y="360" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Approved Patches (KB)</text>
+  <text x="160" y="375" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">PowerShell Export • CSV</text>
+  
+  <!-- Knowledge Base -->
+  <rect x="40" y="405" width="240" height="80" rx="8" fill="url(#sourceGrad)" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="160" y="435" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#1565C0">Knowledge Base</text>
+  <text x="160" y="455" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Approved Procedures</text>
+  <text x="160" y="470" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">SharePoint API or Export</text>
+  
+  <!-- Industrial Defender -->
+  <rect x="40" y="500" width="240" height="100" rx="8" fill="#FFEBEE" stroke="#C62828" stroke-width="2" filter="url(#shadow)"/>
+  <text x="160" y="530" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#C62828">Industrial Defender</text>
+  <text x="160" y="550" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Baseline Change Alerts</text>
+  <text x="160" y="565" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Email (SMTP) or Syslog</text>
+  <text x="160" y="585" text-anchor="middle" font-family="Arial" font-size="10" fill="#C62828">⚡ Event Trigger</text>
+  
+  <!-- SIEM -->
+  <rect x="40" y="615" width="240" height="80" rx="8" fill="url(#sourceGrad)" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="160" y="645" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#1565C0">SIEM / Syslog</text>
+  <text x="160" y="665" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Correlated Security Events</text>
+  <text x="160" y="680" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Syslog • UDP/TCP 514</text>
+  
+  <!-- Core Platform Section -->
+  <rect x="340" y="70" width="500" height="700" rx="10" fill="#FAFAFA" stroke="#2E7D32" stroke-width="2"/>
+  <rect x="340" y="70" width="500" height="35" rx="10" fill="#2E7D32"/>
+  <text x="590" y="94" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">OT CHANGE VALIDATION TOOL (CORE PLATFORM)</text>
+  
+  <!-- Ingestion Layer -->
+  <rect x="360" y="120" width="460" height="110" rx="8" fill="url(#coreGrad)" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="590" y="142" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#2E7D32">INGESTION LAYER</text>
+  
+  <rect x="375" y="155" width="100" height="55" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="425" y="175" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#333">ServiceNow</text>
+  <text x="425" y="190" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Connector</text>
+  <text x="425" y="202" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">Python</text>
+  
+  <rect x="485" y="155" width="100" height="55" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="535" y="175" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#333">Mantis</text>
+  <text x="535" y="190" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Connector</text>
+  <text x="535" y="202" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">Python</text>
+  
+  <rect x="595" y="155" width="100" height="55" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="645" y="175" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#333">WSUS</text>
+  <text x="645" y="190" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Importer</text>
+  <text x="645" y="202" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">PowerShell</text>
+  
+  <rect x="705" y="155" width="100" height="55" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="755" y="175" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#333">Email/Syslog</text>
+  <text x="755" y="190" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Listener</text>
+  <text x="755" y="202" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">Python</text>
+  
+  <!-- Processing Layer -->
+  <rect x="360" y="245" width="460" height="160" rx="8" fill="url(#coreGrad)" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="590" y="267" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#2E7D32">PROCESSING &amp; CORRELATION ENGINE</text>
+  
+  <rect x="375" y="280" width="140" height="110" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="445" y="300" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">Normalization</text>
+  <text x="445" y="318" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Asset name mapping</text>
+  <text x="445" y="332" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Timestamp alignment</text>
+  <text x="445" y="346" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Field standardization</text>
+  <text x="445" y="360" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• KB article extraction</text>
+  <text x="445" y="378" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">Python • Regex</text>
+  
+  <rect x="525" y="280" width="140" height="110" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="595" y="300" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">Correlation</text>
+  <text x="595" y="318" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Change ↔ Alert match</text>
+  <text x="595" y="332" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Time window check</text>
+  <text x="595" y="346" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Asset correlation</text>
+  <text x="595" y="360" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Confidence scoring</text>
+  <text x="595" y="378" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">SQLite • FTS5</text>
+  
+  <rect x="675" y="280" width="140" height="110" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="745" y="300" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">Validation</text>
+  <text x="745" y="318" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Authorization check</text>
+  <text x="745" y="332" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Approval verification</text>
+  <text x="745" y="346" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Change window verify</text>
+  <text x="745" y="360" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">• Auto-validate rules</text>
+  <text x="745" y="378" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">Rules Engine</text>
+  
+  <!-- Data Layer -->
+  <rect x="360" y="420" width="460" height="100" rx="8" fill="url(#coreGrad)" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="590" y="442" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#2E7D32">DATA LAYER</text>
+  
+  <rect x="375" y="455" width="200" height="50" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="475" y="478" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">SQLite Database</text>
+  <text x="475" y="495" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Changes • Alerts • Validations • Audit</text>
+  
+  <rect x="585" y="455" width="230" height="50" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="700" y="478" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">File Storage</text>
+  <text x="700" y="495" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">WSUS Exports • Email Archives • Logs</text>
+  
+  <!-- Web UI Layer -->
+  <rect x="360" y="535" width="460" height="110" rx="8" fill="url(#coreGrad)" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="590" y="557" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#2E7D32">PRESENTATION LAYER</text>
+  
+  <rect x="375" y="570" width="140" height="60" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="445" y="593" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">Web Dashboard</text>
+  <text x="445" y="610" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Streamlit • Flask</text>
+  <text x="445" y="622" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">Port 8501</text>
+  
+  <rect x="525" y="570" width="140" height="60" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="595" y="593" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">REST API</text>
+  <text x="595" y="610" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">FastAPI • OpenAPI</text>
+  <text x="595" y="622" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">Port 8000</text>
+  
+  <rect x="675" y="570" width="140" height="60" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="745" y="593" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">CLI Tools</text>
+  <text x="745" y="610" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Click • Typer</text>
+  <text x="745" y="622" text-anchor="middle" font-family="Arial" font-size="8" fill="#888">Batch Scripts</text>
+  
+  <!-- API Layer -->
+  <rect x="360" y="660" width="460" height="95" rx="8" fill="url(#coreGrad)" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="590" y="682" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#2E7D32">INTEGRATION LAYER</text>
+  
+  <rect x="375" y="695" width="210" height="45" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="480" y="715" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">Scheduled Jobs (Cron)</text>
+  <text x="480" y="730" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Sync • Cleanup • Reports</text>
+  
+  <rect x="595" y="695" width="220" height="45" rx="5" fill="white" stroke="#66BB6A" stroke-width="1"/>
+  <text x="705" y="715" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#333">Notification Service</text>
+  <text x="705" y="730" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">Email • Teams • Slack Alerts</text>
+  
+  <!-- Output Section -->
+  <rect x="880" y="70" width="300" height="700" rx="10" fill="#FFFDE7" stroke="#F57F17" stroke-width="2"/>
+  <rect x="880" y="70" width="300" height="35" rx="10" fill="#F57F17"/>
+  <text x="1030" y="94" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">OUTPUTS &amp; CONSUMERS</text>
+  
+  <!-- Analyst -->
+  <rect x="900" y="120" width="260" height="90" rx="8" fill="url(#outputGrad)" stroke="#EF6C00" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1030" y="150" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#E65100">OT Security Analyst</text>
+  <text x="1030" y="170" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Validation queue dashboard</text>
+  <text x="1030" y="185" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• One-click approve/investigate</text>
+  <text x="1030" y="200" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Search across all sources</text>
+  
+  <!-- Audit Reports -->
+  <rect x="900" y="225" width="260" height="90" rx="8" fill="url(#outputGrad)" stroke="#EF6C00" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1030" y="255" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#E65100">Audit Reports</text>
+  <text x="1030" y="275" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• CIP-010 validation evidence</text>
+  <text x="1030" y="290" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Change authorization trail</text>
+  <text x="1030" y="305" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Export to PDF/Excel</text>
+  
+  <!-- SIEM Integration -->
+  <rect x="900" y="330" width="260" height="90" rx="8" fill="url(#outputGrad)" stroke="#EF6C00" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1030" y="360" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#E65100">SIEM Integration</text>
+  <text x="1030" y="380" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Validation status events</text>
+  <text x="1030" y="395" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Unauthorized change alerts</text>
+  <text x="1030" y="410" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Syslog CEF format</text>
+  
+  <!-- Metrics -->
+  <rect x="900" y="435" width="260" height="90" rx="8" fill="url(#outputGrad)" stroke="#EF6C00" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1030" y="465" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#E65100">Metrics Dashboard</text>
+  <text x="1030" y="485" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Validation rate / backlog</text>
+  <text x="1030" y="500" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Mean time to validate</text>
+  <text x="1030" y="515" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Unauthorized change trends</text>
+  
+  <!-- ID Write-back -->
+  <rect x="900" y="540" width="260" height="90" rx="8" fill="#FFEBEE" stroke="#C62828" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1030" y="570" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#C62828">ID Baseline Update</text>
+  <text x="1030" y="590" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Manual export for ID import</text>
+  <text x="1030" y="605" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">• Validation annotations</text>
+  <text x="1030" y="620" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">(Future: API write-back)</text>
+  
+  <!-- Tech Stack -->
+  <rect x="900" y="645" width="260" height="110" rx="8" fill="white" stroke="#9E9E9E" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1030" y="668" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#333">TECHNOLOGY STACK</text>
+  <text x="920" y="690" font-family="Arial" font-size="9" fill="#1976D2">Python 3.10+</text>
+  <text x="920" y="705" font-family="Arial" font-size="9" fill="#388E3C">SQLite + FTS5</text>
+  <text x="920" y="720" font-family="Arial" font-size="9" fill="#7B1FA2">Streamlit</text>
+  <text x="920" y="735" font-family="Arial" font-size="9" fill="#F57F17">FastAPI</text>
+  <text x="1020" y="690" font-family="Arial" font-size="9" fill="#C62828">Requests</text>
+  <text x="1020" y="705" font-family="Arial" font-size="9" fill="#00796B">Pandas</text>
+  <text x="1020" y="720" font-family="Arial" font-size="9" fill="#5D4037">IMAPLib</text>
+  <text x="1020" y="735" font-family="Arial" font-size="9" fill="#455A64">Schedule</text>
+  
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+  
+  <!-- Source to Core arrows -->
+  <line x1="280" y1="160" x2="340" y2="175" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="280" y1="255" x2="340" y2="185" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="280" y1="350" x2="340" y2="190" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="280" y1="445" x2="340" y2="195" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="280" y1="550" x2="340" y2="200" stroke="#C62828" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,3"/>
+  <line x1="280" y1="655" x2="340" y2="205" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Core to Output arrows -->
+  <line x1="820" y1="165" x2="880" y2="165" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="820" y1="270" x2="880" y2="270" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="820" y1="375" x2="880" y2="375" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="820" y1="480" x2="880" y2="480" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="820" y1="585" x2="880" y2="585" stroke="#C62828" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,3"/>
+</svg>

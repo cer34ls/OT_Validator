@@ -1,0 +1,312 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950">
+  <defs>
+    <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1F4E79"/>
+      <stop offset="100%" style="stop-color:#2E75B6"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Title -->
+  <rect x="0" y="0" width="1400" height="50" fill="url(#hdrGrad)"/>
+  <text x="700" y="32" text-anchor="middle" fill="white" font-family="Arial" font-size="20" font-weight="bold">Database Schema - OT Change Validation Tool (SQLite)</text>
+  
+  <!-- ==================== CHANGES TABLE ==================== -->
+  <rect x="30" y="80" width="320" height="380" rx="8" fill="white" stroke="#1565C0" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="80" width="320" height="35" rx="8" fill="#1565C0"/>
+  <text x="190" y="103" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">changes</text>
+  <text x="190" y="130" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">All change requests from ServiceNow, Mantis, etc.</text>
+  
+  <line x1="30" y1="140" x2="350" y2="140" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <text x="45" y="160" font-family="Consolas, monospace" font-size="10" fill="#C62828" font-weight="bold">🔑 id</text>
+  <text x="200" y="160" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER PRIMARY KEY</text>
+  
+  <text x="45" y="180" font-family="Consolas, monospace" font-size="10" fill="#1565C0">source</text>
+  <text x="200" y="180" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT NOT NULL</text>
+  <text x="45" y="193" font-family="Arial" font-size="8" fill="#888">-- 'servicenow', 'mantis', 'wsus', 'manual'</text>
+  
+  <text x="45" y="213" font-family="Consolas, monospace" font-size="10" fill="#1565C0">ticket_id</text>
+  <text x="200" y="213" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT NOT NULL</text>
+  <text x="45" y="226" font-family="Arial" font-size="8" fill="#888">-- CHG0012345, MANTIS-1234, KB5001234</text>
+  
+  <text x="45" y="246" font-family="Consolas, monospace" font-size="10" fill="#1565C0">asset_name</text>
+  <text x="200" y="246" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="45" y="266" font-family="Consolas, monospace" font-size="10" fill="#1565C0">asset_name_normalized</text>
+  <text x="200" y="266" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="45" y="286" font-family="Consolas, monospace" font-size="10" fill="#1565C0">change_type</text>
+  <text x="200" y="286" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="45" y="299" font-family="Arial" font-size="8" fill="#888">-- 'patch', 'config', 'software', 'user'</text>
+  
+  <text x="45" y="319" font-family="Consolas, monospace" font-size="10" fill="#1565C0">description</text>
+  <text x="200" y="319" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="45" y="339" font-family="Consolas, monospace" font-size="10" fill="#1565C0">scheduled_start</text>
+  <text x="200" y="339" font-family="Consolas, monospace" font-size="10" fill="#333">DATETIME</text>
+  
+  <text x="45" y="359" font-family="Consolas, monospace" font-size="10" fill="#1565C0">scheduled_end</text>
+  <text x="200" y="359" font-family="Consolas, monospace" font-size="10" fill="#333">DATETIME</text>
+  
+  <text x="45" y="379" font-family="Consolas, monospace" font-size="10" fill="#1565C0">approval_status</text>
+  <text x="200" y="379" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT DEFAULT 'pending'</text>
+  
+  <text x="45" y="399" font-family="Consolas, monospace" font-size="10" fill="#1565C0">approved_by</text>
+  <text x="200" y="399" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="45" y="419" font-family="Consolas, monospace" font-size="10" fill="#1565C0">kb_articles</text>
+  <text x="200" y="419" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="45" y="432" font-family="Arial" font-size="8" fill="#888">-- JSON array: ["KB5001234", "KB5001235"]</text>
+  
+  <text x="45" y="452" font-family="Consolas, monospace" font-size="10" fill="#666">created_at, updated_at, raw_data</text>
+  
+  <!-- ==================== ALERTS TABLE ==================== -->
+  <rect x="390" y="80" width="320" height="340" rx="8" fill="white" stroke="#C62828" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="390" y="80" width="320" height="35" rx="8" fill="#C62828"/>
+  <text x="550" y="103" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">alerts</text>
+  <text x="550" y="130" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">Baseline change alerts from Industrial Defender</text>
+  
+  <line x1="390" y1="140" x2="710" y2="140" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <text x="405" y="160" font-family="Consolas, monospace" font-size="10" fill="#C62828" font-weight="bold">🔑 id</text>
+  <text x="560" y="160" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER PRIMARY KEY</text>
+  
+  <text x="405" y="180" font-family="Consolas, monospace" font-size="10" fill="#C62828">alert_id</text>
+  <text x="560" y="180" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT UNIQUE</text>
+  <text x="405" y="193" font-family="Arial" font-size="8" fill="#888">-- ID alert reference number</text>
+  
+  <text x="405" y="213" font-family="Consolas, monospace" font-size="10" fill="#C62828">asset_name</text>
+  <text x="560" y="213" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT NOT NULL</text>
+  
+  <text x="405" y="233" font-family="Consolas, monospace" font-size="10" fill="#C62828">asset_name_normalized</text>
+  <text x="560" y="233" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="405" y="253" font-family="Consolas, monospace" font-size="10" fill="#C62828">change_category</text>
+  <text x="560" y="253" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="405" y="266" font-family="Arial" font-size="8" fill="#888">-- 'software', 'service', 'user', 'config'</text>
+  
+  <text x="405" y="286" font-family="Consolas, monospace" font-size="10" fill="#C62828">change_detail</text>
+  <text x="560" y="286" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="405" y="299" font-family="Arial" font-size="8" fill="#888">-- Specific change: "Installed KB5001234"</text>
+  
+  <text x="405" y="319" font-family="Consolas, monospace" font-size="10" fill="#C62828">detected_at</text>
+  <text x="560" y="319" font-family="Consolas, monospace" font-size="10" fill="#333">DATETIME NOT NULL</text>
+  
+  <text x="405" y="339" font-family="Consolas, monospace" font-size="10" fill="#C62828">severity</text>
+  <text x="560" y="339" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER DEFAULT 3</text>
+  
+  <text x="405" y="359" font-family="Consolas, monospace" font-size="10" fill="#C62828">validation_status</text>
+  <text x="560" y="359" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT DEFAULT 'pending'</text>
+  <text x="405" y="372" font-family="Arial" font-size="8" fill="#888">-- 'pending', 'validated', 'unauthorized', 'investigating'</text>
+  
+  <text x="405" y="392" font-family="Consolas, monospace" font-size="10" fill="#666">source_type, raw_email, created_at</text>
+  
+  <!-- ==================== VALIDATIONS TABLE ==================== -->
+  <rect x="750" y="80" width="320" height="380" rx="8" fill="white" stroke="#2E7D32" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="750" y="80" width="320" height="35" rx="8" fill="#2E7D32"/>
+  <text x="910" y="103" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">validations</text>
+  <text x="910" y="130" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">Correlation results and validation decisions</text>
+  
+  <line x1="750" y1="140" x2="1070" y2="140" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <text x="765" y="160" font-family="Consolas, monospace" font-size="10" fill="#C62828" font-weight="bold">🔑 id</text>
+  <text x="920" y="160" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER PRIMARY KEY</text>
+  
+  <text x="765" y="180" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">🔗 alert_id</text>
+  <text x="920" y="180" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER → alerts.id</text>
+  
+  <text x="765" y="200" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">🔗 change_id</text>
+  <text x="920" y="200" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER → changes.id</text>
+  
+  <text x="765" y="220" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">correlation_score</text>
+  <text x="920" y="220" font-family="Consolas, monospace" font-size="10" fill="#333">REAL</text>
+  <text x="765" y="233" font-family="Arial" font-size="8" fill="#888">-- 0.0 to 1.0 confidence</text>
+  
+  <text x="765" y="253" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">correlation_factors</text>
+  <text x="920" y="253" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="765" y="266" font-family="Arial" font-size="8" fill="#888">-- JSON: {"asset": 0.9, "time": 0.8, "type": 1.0}</text>
+  
+  <text x="765" y="286" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">validation_status</text>
+  <text x="920" y="286" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT NOT NULL</text>
+  <text x="765" y="299" font-family="Arial" font-size="8" fill="#888">-- 'auto_validated', 'manual_validated', 'unauthorized'</text>
+  
+  <text x="765" y="319" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">validated_by</text>
+  <text x="920" y="319" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="765" y="332" font-family="Arial" font-size="8" fill="#888">-- 'SYSTEM' or analyst username</text>
+  
+  <text x="765" y="352" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">validated_at</text>
+  <text x="920" y="352" font-family="Consolas, monospace" font-size="10" fill="#333">DATETIME</text>
+  
+  <text x="765" y="372" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">notes</text>
+  <text x="920" y="372" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="765" y="392" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">evidence_links</text>
+  <text x="920" y="392" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="765" y="405" font-family="Arial" font-size="8" fill="#888">-- JSON: URLs to tickets, emails</text>
+  
+  <text x="765" y="425" font-family="Consolas, monospace" font-size="10" fill="#2E7D32">auto_validation_rule</text>
+  <text x="920" y="425" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="765" y="452" font-family="Consolas, monospace" font-size="10" fill="#666">created_at</text>
+  
+  <!-- ==================== AUDIT_LOG TABLE ==================== -->
+  <rect x="1110" y="80" width="270" height="280" rx="8" fill="white" stroke="#F57F17" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="1110" y="80" width="270" height="35" rx="8" fill="#F57F17"/>
+  <text x="1245" y="103" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">audit_log</text>
+  <text x="1245" y="130" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">Complete audit trail for compliance</text>
+  
+  <line x1="1110" y1="140" x2="1380" y2="140" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <text x="1125" y="160" font-family="Consolas, monospace" font-size="10" fill="#C62828" font-weight="bold">🔑 id</text>
+  <text x="1260" y="160" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER PRIMARY KEY</text>
+  
+  <text x="1125" y="180" font-family="Consolas, monospace" font-size="10" fill="#F57F17">timestamp</text>
+  <text x="1260" y="180" font-family="Consolas, monospace" font-size="10" fill="#333">DATETIME NOT NULL</text>
+  
+  <text x="1125" y="200" font-family="Consolas, monospace" font-size="10" fill="#F57F17">action</text>
+  <text x="1260" y="200" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT NOT NULL</text>
+  <text x="1125" y="213" font-family="Arial" font-size="8" fill="#888">-- 'create', 'update', 'validate', 'export'</text>
+  
+  <text x="1125" y="233" font-family="Consolas, monospace" font-size="10" fill="#F57F17">table_name</text>
+  <text x="1260" y="233" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="1125" y="253" font-family="Consolas, monospace" font-size="10" fill="#F57F17">record_id</text>
+  <text x="1260" y="253" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER</text>
+  
+  <text x="1125" y="273" font-family="Consolas, monospace" font-size="10" fill="#F57F17">user</text>
+  <text x="1260" y="273" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT NOT NULL</text>
+  
+  <text x="1125" y="293" font-family="Consolas, monospace" font-size="10" fill="#F57F17">old_value</text>
+  <text x="1260" y="293" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="1125" y="313" font-family="Consolas, monospace" font-size="10" fill="#F57F17">new_value</text>
+  <text x="1260" y="313" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="1125" y="333" font-family="Consolas, monospace" font-size="10" fill="#F57F17">ip_address</text>
+  <text x="1260" y="333" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <!-- ==================== ASSETS TABLE ==================== -->
+  <rect x="30" y="490" width="320" height="220" rx="8" fill="white" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="490" width="320" height="35" rx="8" fill="#7B1FA2"/>
+  <text x="190" y="513" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">assets</text>
+  <text x="190" y="540" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">Asset name mapping and normalization</text>
+  
+  <line x1="30" y1="550" x2="350" y2="550" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <text x="45" y="570" font-family="Consolas, monospace" font-size="10" fill="#C62828" font-weight="bold">🔑 id</text>
+  <text x="200" y="570" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER PRIMARY KEY</text>
+  
+  <text x="45" y="590" font-family="Consolas, monospace" font-size="10" fill="#7B1FA2">canonical_name</text>
+  <text x="200" y="590" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT UNIQUE NOT NULL</text>
+  
+  <text x="45" y="610" font-family="Consolas, monospace" font-size="10" fill="#7B1FA2">aliases</text>
+  <text x="200" y="610" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="45" y="623" font-family="Arial" font-size="8" fill="#888">-- JSON: ["SRV01", "SERVER01", "10.1.1.50"]</text>
+  
+  <text x="45" y="643" font-family="Consolas, monospace" font-size="10" fill="#7B1FA2">asset_type</text>
+  <text x="200" y="643" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="45" y="656" font-family="Arial" font-size="8" fill="#888">-- 'server', 'workstation', 'plc', 'rtu'</text>
+  
+  <text x="45" y="676" font-family="Consolas, monospace" font-size="10" fill="#7B1FA2">environment</text>
+  <text x="200" y="676" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="45" y="689" font-family="Arial" font-size="8" fill="#888">-- 'PCC', 'BCC', 'DMZ'</text>
+  
+  <!-- ==================== WSUS_PATCHES TABLE ==================== -->
+  <rect x="390" y="490" width="320" height="220" rx="8" fill="white" stroke="#00796B" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="390" y="490" width="320" height="35" rx="8" fill="#00796B"/>
+  <text x="550" y="513" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">wsus_patches</text>
+  <text x="550" y="540" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">Approved patches from WSUS exports</text>
+  
+  <line x1="390" y1="550" x2="710" y2="550" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <text x="405" y="570" font-family="Consolas, monospace" font-size="10" fill="#C62828" font-weight="bold">🔑 id</text>
+  <text x="560" y="570" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER PRIMARY KEY</text>
+  
+  <text x="405" y="590" font-family="Consolas, monospace" font-size="10" fill="#00796B">kb_number</text>
+  <text x="560" y="590" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT UNIQUE NOT NULL</text>
+  
+  <text x="405" y="610" font-family="Consolas, monospace" font-size="10" fill="#00796B">title</text>
+  <text x="560" y="610" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  
+  <text x="405" y="630" font-family="Consolas, monospace" font-size="10" fill="#00796B">classification</text>
+  <text x="560" y="630" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="405" y="643" font-family="Arial" font-size="8" fill="#888">-- 'Security', 'Critical', 'Definition'</text>
+  
+  <text x="405" y="663" font-family="Consolas, monospace" font-size="10" fill="#00796B">approval_date</text>
+  <text x="560" y="663" font-family="Consolas, monospace" font-size="10" fill="#333">DATETIME</text>
+  
+  <text x="405" y="683" font-family="Consolas, monospace" font-size="10" fill="#00796B">approved_for_groups</text>
+  <text x="560" y="683" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="405" y="696" font-family="Arial" font-size="8" fill="#888">-- JSON: ["OT Servers", "SCADA"]</text>
+  
+  <!-- ==================== SYNC_STATUS TABLE ==================== -->
+  <rect x="750" y="490" width="320" height="180" rx="8" fill="white" stroke="#455A64" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="750" y="490" width="320" height="35" rx="8" fill="#455A64"/>
+  <text x="910" y="513" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">sync_status</text>
+  <text x="910" y="540" text-anchor="middle" fill="#666" font-family="Arial" font-size="10">Track data source synchronization</text>
+  
+  <line x1="750" y1="550" x2="1070" y2="550" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <text x="765" y="570" font-family="Consolas, monospace" font-size="10" fill="#C62828" font-weight="bold">🔑 id</text>
+  <text x="920" y="570" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER PRIMARY KEY</text>
+  
+  <text x="765" y="590" font-family="Consolas, monospace" font-size="10" fill="#455A64">source_name</text>
+  <text x="920" y="590" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT UNIQUE</text>
+  
+  <text x="765" y="610" font-family="Consolas, monospace" font-size="10" fill="#455A64">last_sync</text>
+  <text x="920" y="610" font-family="Consolas, monospace" font-size="10" fill="#333">DATETIME</text>
+  
+  <text x="765" y="630" font-family="Consolas, monospace" font-size="10" fill="#455A64">records_synced</text>
+  <text x="920" y="630" font-family="Consolas, monospace" font-size="10" fill="#333">INTEGER</text>
+  
+  <text x="765" y="650" font-family="Consolas, monospace" font-size="10" fill="#455A64">status</text>
+  <text x="920" y="650" font-family="Consolas, monospace" font-size="10" fill="#333">TEXT</text>
+  <text x="765" y="663" font-family="Arial" font-size="8" fill="#888">-- 'success', 'failed', 'running'</text>
+  
+  <!-- ==================== RELATIONSHIP LINES ==================== -->
+  <!-- alerts to validations -->
+  <path d="M 550 420 L 550 450 Q 550 470 600 470 L 750 400" stroke="#666" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <text x="640" y="445" font-family="Arial" font-size="9" fill="#666">1:N</text>
+  
+  <!-- changes to validations -->
+  <path d="M 350 250 L 380 250 Q 400 250 400 350 L 400 450 Q 400 470 500 470 L 750 380" stroke="#666" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <text x="420" y="360" font-family="Arial" font-size="9" fill="#666">1:N</text>
+  
+  <!-- ==================== INDEXES BOX ==================== -->
+  <rect x="1110" y="400" width="270" height="200" rx="8" fill="#ECEFF1" stroke="#607D8B" stroke-width="1"/>
+  <text x="1245" y="425" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#455A64">INDEXES</text>
+  
+  <text x="1125" y="450" font-family="Consolas, monospace" font-size="9" fill="#333">idx_changes_ticket</text>
+  <text x="1125" y="465" font-family="Arial" font-size="8" fill="#666">ON changes(ticket_id)</text>
+  
+  <text x="1125" y="485" font-family="Consolas, monospace" font-size="9" fill="#333">idx_changes_asset_norm</text>
+  <text x="1125" y="500" font-family="Arial" font-size="8" fill="#666">ON changes(asset_name_normalized)</text>
+  
+  <text x="1125" y="520" font-family="Consolas, monospace" font-size="9" fill="#333">idx_alerts_asset_norm</text>
+  <text x="1125" y="535" font-family="Arial" font-size="8" fill="#666">ON alerts(asset_name_normalized)</text>
+  
+  <text x="1125" y="555" font-family="Consolas, monospace" font-size="9" fill="#333">idx_alerts_status</text>
+  <text x="1125" y="570" font-family="Arial" font-size="8" fill="#666">ON alerts(validation_status)</text>
+  
+  <text x="1125" y="590" font-family="Consolas, monospace" font-size="9" fill="#333">idx_wsus_kb</text>
+  <text x="1125" y="605" font-family="Arial" font-size="8" fill="#666">ON wsus_patches(kb_number)</text>
+  
+  <!-- ==================== LEGEND ==================== -->
+  <rect x="30" y="740" width="1350" height="90" rx="8" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="50" y="765" font-family="Arial" font-size="12" font-weight="bold" fill="#333">SCHEMA NOTES</text>
+  
+  <text x="50" y="790" font-family="Arial" font-size="10" fill="#333">• All timestamps stored in UTC (ISO 8601 format)</text>
+  <text x="50" y="808" font-family="Arial" font-size="10" fill="#333">• JSON fields stored as TEXT, parsed at application layer</text>
+  
+  <text x="400" y="790" font-family="Arial" font-size="10" fill="#333">• asset_name_normalized: lowercase, trimmed, standardized</text>
+  <text x="400" y="808" font-family="Arial" font-size="10" fill="#333">• FTS5 virtual table for full-text search on descriptions</text>
+  
+  <text x="800" y="790" font-family="Arial" font-size="10" fill="#333">• Soft deletes via 'deleted_at' column (not shown)</text>
+  <text x="800" y="808" font-family="Arial" font-size="10" fill="#333">• WAL mode enabled for concurrent read/write</text>
+  
+  <text x="1150" y="790" font-family="Arial" font-size="10" fill="#1565C0" font-weight="bold">Database: SQLite 3.35+</text>
+  <text x="1150" y="808" font-family="Arial" font-size="10" fill="#1565C0">File: validation_tool.db</text>
+</svg>
